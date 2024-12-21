@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="onInit()">
 
-    <header>
+    <header class="main-header flex space-between">
         <div class="logo">Meme-Generator</div>
-        <ul class="main-nav">
+        <ul class="main-nav clean-list flex">
             <li><a href="">Gallery</a></li>
             <li><a href="">Saved</a></li>
             <li><a href="">Randomized</a></li>
@@ -17,19 +18,28 @@
     </header>
 
     <main>
-        <section class="gallery">
-            <img src="meme-imgs (square)/1.jpg" alt="">
-            <img src="meme-imgs (square)/2.jpg" alt="">
-        </section>
-
+        
         <section class="meme-editor">
-            <canvas height="300px" width="300px"></canvas>
+            <div class="canvas-container">
+                <canvas height="400px" width="400px"></canvas>
+            </div>
             <section class="design-btns">
-
+                <input type="text" placeholder="Enter Text" oninput="onSetLineTxt(this.value)">
             </section>
-
+            
+            <section>
+                <h2>Gallery</h2>
+               <div class="gallery">
+                
+               </div>
+ 
+            </section>
         </section>
     </main>
-    
+   
+    <script src="js/util.service.js"></script>
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
 </body>
 </html>

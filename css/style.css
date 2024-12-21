@@ -1,0 +1,11 @@
+/* SETUPS */
+
+
+/*BASICS*/
+@import url('basics/helpers.css');
+
+/*  COMPONENTS*/
+
+@import url('componentes/canvas.css');
+@import url('componentes/header.css');
+@import url('componentes/main-nav.css');

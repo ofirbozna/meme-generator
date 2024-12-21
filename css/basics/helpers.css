@@ -1,0 +1,15 @@
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+}
+
+.flex{
+    display: flex;
+}
+
+
+.space-between{
+    justify-content: space-between;
+}
