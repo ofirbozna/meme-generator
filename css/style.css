@@ -1,11 +1,16 @@
 /* SETUPS */
+@import url('setup/vars.css');
 
 
 /*BASICS*/
 @import url('basics/helpers.css');
+@import url('basics/base.css');
+@import url('basics/layout.css');
 
 /*  COMPONENTS*/
 
 @import url('componentes/canvas.css');
 @import url('componentes/header.css');
 @import url('componentes/main-nav.css');
+@import url('componentes/design-btns.css');
+@import url('componentes/gallery.css');

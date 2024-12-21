@@ -1,0 +1,16 @@
+.meme-editor{
+    display: grid;
+    grid-template-columns: minmax(30px, 1fr) minmax(auto, 530px) 70px minmax(auto, 530px) minmax(30px, 1fr);
+}
+.canvas-container{
+    grid-column: 2;
+}
+
+.design-btns{
+    grid-column: 4;
+}
+
+
+.hidden{
+    display: none;
+}

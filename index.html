@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body onload="onInit()">
 
     <header class="main-header flex space-between">
@@ -18,28 +20,29 @@
     </header>
 
     <main>
-        
+
         <section class="meme-editor">
             <div class="canvas-container">
-                <canvas height="400px" width="400px"></canvas>
+                <canvas height="520px" width="520px"></canvas>
             </div>
             <section class="design-btns">
                 <input type="text" placeholder="Enter Text" oninput="onSetLineTxt(this.value)">
             </section>
-            
-            <section>
-                <h2>Gallery</h2>
-               <div class="gallery">
-                
-               </div>
- 
-            </section>
+
+        </section>
+        <section class=" hidde">
+            <h2>Gallery</h2>
+            <div class="gallery">
+    
+            </div>
+    
         </section>
     </main>
-   
+
     <script src="js/util.service.js"></script>
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
 </body>
+
 </html>

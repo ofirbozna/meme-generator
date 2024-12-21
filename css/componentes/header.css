@@ -1,5 +1,16 @@
-.main-header{
-    background-color: blanchedalmond;
+.main-header {
+    background: rgb(16, 156, 177);
+    background: linear-gradient(90deg, rgba(16, 156, 177, 1) 18%, rgba(47, 186, 117, 1) 71%);
+    color: var(--crlPrimary);
+    font-size: 1.25rem;
     align-items: center;
     margin-block-end: 2rem;
+    border-radius: 30px;
+    padding-inline:7.8125rem;
+}
+
+.main-header a{
+    text-decoration: none;
+    color: var(--crlPrimary);
+
 }
