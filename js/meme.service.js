@@ -21,7 +21,8 @@ var gMeme = {
         {
             txt: 'ADD TEXT',
             size: 20,
-            color: 'red'
+            borderColor: 'red',
+            fillColor: 'white',
         }
     ]
 }
@@ -58,9 +59,21 @@ function setImg(imgId) {
         lines: [
             {
                 txt: 'ADD TEXT',
-                size: 20, color: 'red'
+                size: 20,
+                borderColor: 'red',
+                fillColor: 'white',
             }
         ]
     }
 
+}
+
+function setColor(borderColor, fillColor) {
+
+    gMeme.lines[0].borderColor = borderColor
+    gMeme.lines[0].fillColor = fillColor
+}
+
+function setFontSize(diff) {
+    gMeme.lines[0].size += diff
 }

@@ -6,3 +6,7 @@ body{
     background-color: var(--crlPrimary2);
     color: var(--crlPrimary);
 }
+
+a{
+    color: var(--crlPrimary);
+}
