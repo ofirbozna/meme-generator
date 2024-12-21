@@ -35,7 +35,13 @@ function drawText(text, x, y) {
     gCtx.strokeText(text, x, y)
   }
 
-  function onSetLineTxt(val){
+function onDownloadCanvas(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+    elLink.download = 'my-canvas'
+}
+
+function onSetLineTxt(val) {
     setLineTxt(val)
     renderMeme()
   }
