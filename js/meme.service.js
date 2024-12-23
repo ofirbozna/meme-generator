@@ -20,11 +20,12 @@ var gMeme = {
     lines: [
         {
             txt: 'ADD TEXT',
-            size: 20,
-            borderColor: 'red',
-            fillColor: 'white',
+            fontSize: 20,
+            borderColor: '#22252c',
+            fillColor: '#ffffff',
             posX: 200,
             posY: 200,
+            size: 0,
         },
 
 
@@ -49,10 +50,6 @@ function getImges() {
     return gImgs
 }
 
-// function getSelectedLine(){
-//     return gSelectedLineIdx
-// }
-
 function getImgById(imgId) {
     return gImgs.find(img => img.id === imgId)
 }
@@ -69,26 +66,32 @@ function setImg(imgId) {
 function setColor(borderColor, fillColor) {
 
     gMeme.lines[gMeme.selectedLineIdx].borderColor = borderColor
-    gMeme.lines[gMeme.selectedImgId].fillColor = fillColor
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor
 }
 
 function setFontSize(diff) {
-    gMeme.lines[0].size += diff
+    gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
 }
 
 function addLine() {
     gMeme.lines.push({
         txt: 'ADD TEXT',
-        size: 20,
-        borderColor: 'red',
-        fillColor: 'white',
+        fontSize: 20,
+        borderColor: '#22252c',
+        fillColor: '#ffffff',
         posX: getRandomInt(40, 400),
-        posY: getRandomInt(40, 400)
+        posY: getRandomInt(40, 400),
+        size: 0
     })
 }
 
 function swichLine() {
-    if (gMeme.selectedLineIdx+ 1 < gMeme.lines.length) gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx + 1 < gMeme.lines.length) gMeme.selectedLineIdx++
     else gMeme.selectedLineIdx = 0
-    
+
+}
+
+function isLineClicked(clickedPos,linePosX, linePosY, textWidth, textHeight) {
+    return clickedPos.x >= linePosX && clickedPos.x <= linePosX + textWidth &&
+        clickedPos.y >= linePosY- textHeight && clickedPos.y <= linePosY;
 }
