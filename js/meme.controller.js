@@ -8,10 +8,25 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    const meme = getMeme()
+    const img = getImgById(meme.selectedImgId)
     renderMeme()
     renderGallery()
     addLinsteners()
+    resizeCanvas()
+
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
 }
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    // Changing the canvas dimension clears the canvas
+    gElCanvas.width = elContainer.clientWidth - 2
+}
+
 
 
 function renderMeme() {
@@ -20,6 +35,7 @@ function renderMeme() {
     const elImg = new Image()
     elImg.src = img.url
     elImg.onload = () => {
+        gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         meme.lines.forEach((line, idx) => {
             line.size = drawText(line.txt, line.posX, line.posY, line.borderColor, line.fillColor, line.fontSize)
@@ -140,6 +156,20 @@ function renderSelectedLineInputs() {
     elFillColor.value = selectedLine.fillColor
     elBorderColor.value = selectedLine.borderColor
     elTxt.value = selectedLine.txt
+}
 
+function onClickGallery(){
+    const elGallery =document.querySelector('.gallery-container')
+    const elMemeEditor = document.querySelector('.meme-editor')
+    elGallery.classList.remove('hidden')
+elMemeEditor.classList.add('hidden')
+
+}
+
+function onClickMemeGenerator(){
+    const elGallery =document.querySelector('.gallery-container')
+    const elMemeEditor = document.querySelector('.meme-editor')
+    elGallery.classList.add('hidden')
+elMemeEditor.classList.remove('hidden')
 
 }

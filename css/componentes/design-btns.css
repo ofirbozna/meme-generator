@@ -1,4 +1,37 @@
-.design-btns{
+.design-btns {
    background-color: var(--crlPrimary1);
    border-radius: 30px;
+}
+
+.line-txt {
+   margin-block: 1rem;
+   align-self: center;
+   text-align: center;
+   border-radius: 10px;
+   background-color: #ebeef3;
+   border: none;
+   box-shadow:
+      0 2px 0 0 #bbc4d1,
+      0 -2px 0 0 #ffffff;
+
+}
+
+.line-edit {
+   align-self: center;
+   margin-block-end: 1rem;
+}
+
+.txt-edit{
+   display: grid;
+   grid-template-columns: 5px 1fr 1fr  5px;
+   align-self: center;
+
+}
+
+.txt-edit label{
+   grid-column: 2;
+}
+
+.txt-edit button:first-of-type{
+   grid-column: 2;
 }

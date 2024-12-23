@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a439765def.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="onInit()">
 
-    <header class="main-header flex space-between">
-        <div class="logo">Meme-Generator</div>
+    <header class="main-header flex space-evenly">
+        <div class="logo" onclick="onClickMemeGenerator()">Meme-Generator</div>
         <ul class="main-nav clean-list flex">
-            <li><a href="">Gallery</a></li>
+            <li><a href="#gallery-container" onclick="onClickGallery()">Gallery</a></li>
             <li><a href="">Saved</a></li>
             <li><a href="">Randomized</a></li>
         </ul>
@@ -25,26 +26,32 @@
             <div class="canvas-container">
                 <canvas height="520px" width="520px"></canvas>
             </div>
-            <section class="design-btns">
+            <section class="design-btns flex">
                 <input class="line-txt" type="text" placeholder="Enter Text" oninput="onSetLineTxt(this.value)">
-                <label for="color">Border color</label>
-                <input type="color" class="border-color" oninput="onSetColor()">
-                <label for="color">Fill Color</label>
-                <input type="color" class="fill-color" oninput="onSetColor()">
+                <div class="line-edit">
+                    <button class="fa switch" onclick=" onSwitchLine()"></button>
+                    <button onclick="onAddLine()">+</button>
+                    <button>delete</button>
+                </div>
+                <div class="txt-edit">
+                    <label for="color">Border color</label>
+                    <input type="color" class="fa border-color" oninput="onSetColor()">
+                    <label for="color">Fill Color</label>
+                    <input type="color" class="fill-color" oninput="onSetColor()">
+                    <button onclick="onSetFontSize(+1)">A+</button>
+                    <button onclick="onSetFontSize(-1)">A-</button>
+                </div>
                 <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
-                <button onclick="onSetFontSize(+1)">A+</button>
-                <button onclick="onSetFontSize(-1)" >A-</button>
-                <button onclick="onAddLine()">Add line</button>
-                <button onclick=" onSwitchLine()">Swich line</button>
+
             </section>
 
         </section>
-        <section class=" hidde">
+        <section class="gallery-container hidden" id="gallery-container">
             <h2>Gallery</h2>
             <div class="gallery">
-    
+
             </div>
-    
+
         </section>
     </main>
 

@@ -23,8 +23,8 @@ var gMeme = {
             fontSize: 20,
             borderColor: '#22252c',
             fillColor: '#ffffff',
-            posX: 200,
-            posY: 200,
+            posX: 30,
+            posY: 30,
             size: 0,
         },
 
@@ -79,8 +79,8 @@ function addLine() {
         fontSize: 20,
         borderColor: '#22252c',
         fillColor: '#ffffff',
-        posX: getRandomInt(40, 400),
-        posY: getRandomInt(40, 400),
+        posX: getRandomInt(40, 100),
+        posY: getRandomInt(40, 100),
         size: 0
     })
 }
