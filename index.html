@@ -11,6 +11,8 @@
 
 <body onload="onInit()">
 
+    <div class="main-screen" onclick="onToggleMenu()" ></div>
+
     <header class="main-header flex space-evenly">
         <div class="logo" onclick="onClickMemeGenerator()">Meme-Generator</div>
         <ul class="main-nav clean-list flex">
@@ -18,7 +20,9 @@
             <li><a href="">Saved</a></li>
             <li><a href="">Randomized</a></li>
         </ul>
+        <button onclick="onToggleMenu()" class="nav-btn">☰</button>
     </header>
+
 
     <main>
 
@@ -47,7 +51,6 @@
 
         </section>
         <section class="gallery-container hidden" id="gallery-container">
-            <h2>Gallery</h2>
             <div class="gallery">
 
             </div>

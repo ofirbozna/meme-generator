@@ -5,6 +5,7 @@
 body{
     background-color: var(--crlPrimary2);
     color: var(--crlPrimary);
+    margin: 0;
 }
 
 a{

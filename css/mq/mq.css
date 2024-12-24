@@ -1,18 +1,108 @@
-@media (max-width: 760px){
-    .meme-editor{
-        max-width: 500px;
-        margin-inline: auto;
+@media (max-width: 760px) {
+    .main-header {
+        position: sticky;
+        justify-content: space-between;
+        background: linear-gradient(90deg, rgba(16, 156, 177, 1) 18%, rgba(47, 186, 117, 1) 71%);
+        color: var(--crlPrimary);
+        font-size: 1.25rem;
+        align-items: center;
+        border-radius: 0;
+        padding-block: 1.5rem;
+        padding-inline: 1.5rem;
     }
 
-    .canvas-container{
+    .logo{
+        font-size: 1.5rem;
+    }
+
+    .meme-editor {
+        display: grid;
+        grid-template-columns: minmax(10px, 1fr) minmax(auto, 80vw) minmax(10px, 1fr);
+    }
+
+    .canvas-container {
+        grid-column: 2;
+    }
+
+    .design-btns {
+        grid-column: 2;
+    }
+
+    .canvas-container {
         margin-block-end: 30px;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 2rem;
+        background-color: var(--crlPrimary2);
+        border-inline-start: 2px solid #22252c9f;
+        gap: 0;
+        padding: 0;
+        align-content: center;
+
+
+    }
+
+    .main-header ul {
+        flex-direction: column;
+    }
+
+    .main-nav {
+        transition: transform 400ms;
+    }
+
+    .main-nav a {
+        display: flex;
+        width: 12rem;
+        height: 7rem;
+        box-shadow: 0 1px 0 0 rgb(134, 134, 134);
+        align-items: center;
+        justify-content: center;
+    }
+
+    body:not(.menu-open) .main-nav {
+        transform: translateX(100%);
+        pointer-events: none;
+
+    }
+
+    body:not(.menu-open) .journal-drop-down {
+        pointer-events: none;
+    }
+
+    .shown {
+        opacity: 1;
+    }
+    .hidden{
+        display: none;
     }
 }
 
 
-@media ((min-width: 760px)){
-    .meme-editor{
-        display: grid;
-        grid-template-columns: minmax(30px, 1fr) minmax(auto, 40vw) 70px minmax(auto, 530px) minmax(30px, 1fr);
+@media ((min-width: 760px)) {
+
+    .main-header {
+        margin-block-start: 10px;
+        margin-inline: 10px;
     }
+
+    .meme-editor {
+        display: grid;
+        grid-template-columns: minmax(30px, 1fr) minmax(auto, 45vw) 70px minmax(auto, 530px) minmax(30px, 1fr);
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .hidden{
+        display: none;
+    }
+
+
+
 }

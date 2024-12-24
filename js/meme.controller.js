@@ -171,5 +171,10 @@ function onClickMemeGenerator(){
     const elMemeEditor = document.querySelector('.meme-editor')
     elGallery.classList.add('hidden')
 elMemeEditor.classList.remove('hidden')
+}
+
+function onToggleMenu(){
+    const elBody = document.querySelector('body')
+    elBody.classList.toggle('menu-open')
 
 }

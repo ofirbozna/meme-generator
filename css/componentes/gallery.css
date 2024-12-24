@@ -1,9 +1,17 @@
-.gallery-container{
+.gallery-container {
     margin-block-start: 3em;
 }
 
+.gallery {
+    column-count: 6;
+    column-width: 200px;
+    column-gap: 5px;
+    margin-inline: 20px;
+}
 
-.gallery img{
-    width: 150px;
+.gallery img {
+    width: 200px;
     border-radius: 10px;
+    cursor: pointer;
+    margin-block-end: 5px;
 }
