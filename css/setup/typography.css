@@ -11,18 +11,8 @@
     content: "\f063\f062";   
 }
 
-.border-color, .fill-color{
-    font-size: 2em;
-    -webkit-appearance: none; 
-    -moz-appearance: none;     
-    appearance: none;         
-    border: 2px solid #333;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #fff;
-    cursor: pointer;
-    height: 50px;
+
+.fa.delete::before{
+    content: '\f1f8';
 }
-
-
 

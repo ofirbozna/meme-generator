@@ -113,6 +113,8 @@ var gMeme = {
             posX: 30,
             posY: 30,
             size: 0,
+            fontFamily: 'Arial',
+            isDrag: false
         },
 
 
@@ -156,8 +158,12 @@ function setColor(borderColor, fillColor) {
     gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor
 }
 
-function setFontSize(diff) {
+function setLowerBiggerFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
+}
+
+function setFontSize(value) {
+    gMeme.lines[gMeme.selectedLineIdx].fontSize = value
 }
 
 function addLine() {
@@ -168,8 +174,14 @@ function addLine() {
         fillColor: '#ffffff',
         posX: getRandomInt(40, 100),
         posY: getRandomInt(40, 100),
-        size: 0
+        size: 0,
+        fontFamily: 'Arial',
+        isDrag: false
     })
+}
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
 function swichLine() {
@@ -181,4 +193,23 @@ function swichLine() {
 function isLineClicked(clickedPos, linePosX, linePosY, textWidth, textHeight) {
     return clickedPos.x >= linePosX && clickedPos.x <= linePosX + textWidth &&
         clickedPos.y >= linePosY - textHeight && clickedPos.y <= linePosY;
+}
+
+function ChangeFont(value) {
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = value
+}
+
+
+
+
+//////////
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    selectedLine.posX += dx
+    selectedLine.posY += dy
+
 }

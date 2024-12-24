@@ -2,6 +2,7 @@
 let gElCanvas
 let gCtx
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+let gStartPos
 
 
 
@@ -37,17 +38,19 @@ function renderMeme() {
     elImg.onload = () => {
         gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        if (meme.lines.length === 0) return
         meme.lines.forEach((line, idx) => {
-            line.size = drawText(line.txt, line.posX, line.posY, line.borderColor, line.fillColor, line.fontSize)
+            line.size = drawText(line.txt, line.posX, line.posY, line.borderColor, line.fillColor, line.fontSize, line.fontFamily)
             if (idx === meme.selectedLineIdx) frameSelectedLine(line.posX, line.posY, line.size, line.fontSize)
         })
     }
+    if (meme.lines.length === 0) return
     renderSelectedLineInputs()
 }
 
-function drawText(text, x, y, borderColor, fillColor, fontSize = 30) {
+function drawText(text, x, y, borderColor, fillColor, fontSize = 30, fontFamily) {
 
-    var font = fontSize + 'px' + ' Arial'
+    var font = fontSize + 'px ' + fontFamily
 
     gCtx.lineWidth = 1
     gCtx.strokeStyle = borderColor
@@ -78,8 +81,8 @@ function onSetLineTxt(val) {
 }
 
 
-function onSetFontSize(diff) {
-    setFontSize(diff)
+function onSetLowerBiggerFontSize(diff) {
+    setLowerBiggerFontSize(diff)
     renderMeme()
 }
 
@@ -106,23 +109,45 @@ function addLinsteners() {
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
-    // gElCanvas.addEventListener('mousemove', onMove)
-    // gElCanvas.addEventListener('mouseup', onUp)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
     gElCanvas.addEventListener('touchstart', onDown)
-    // gElCanvas.addEventListener('touchmove', onMove)
-    // gElCanvas.addEventListener('touchend', onUp)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
 }
 
 function onDown(ev) {
     const pos = getEvPos(ev)
     const meme = getMeme()
     meme.lines.forEach((line, idx) => {
-        if (isLineClicked(pos, line.posX, line.posY, line.size, line.fontSize)) meme.selectedLineIdx = idx
+        if (isLineClicked(pos, line.posX, line.posY, line.size, line.fontSize)) {
+            meme.selectedLineIdx = idx
+            setLineDrag(true)
+            gStartPos = pos
+            document.body.style.cursor = 'grabbing'
+        }
     })
     renderMeme()
+}
+
+function onMove(ev) {
+    const meme = getMeme()
+    const { isDrag } = meme.lines[gMeme.selectedLineIdx]
+    if (!isDrag) return
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    gStartPos = pos
+    renderMeme()
+}
+
+function onUp() {
+    setLineDrag(false)
+    document.body.style.cursor = 'grab'
 }
 
 function getEvPos(ev) {
@@ -153,28 +178,47 @@ function renderSelectedLineInputs() {
     const elFillColor = document.querySelector('.fill-color')
     const elBorderColor = document.querySelector('.border-color')
     const elTxt = document.querySelector('.line-txt')
+    const elFontSize = document.querySelector('.font-size-selector')
     elFillColor.value = selectedLine.fillColor
     elBorderColor.value = selectedLine.borderColor
     elTxt.value = selectedLine.txt
+    elFontSize.value = selectedLine.fontSize
 }
 
-function onClickGallery(){
-    const elGallery =document.querySelector('.gallery-container')
+function onClickGallery() {
+    const elGallery = document.querySelector('.gallery-container')
     const elMemeEditor = document.querySelector('.meme-editor')
     elGallery.classList.remove('hidden')
-elMemeEditor.classList.add('hidden')
+    elMemeEditor.classList.add('hidden')
 
 }
 
-function onClickMemeGenerator(){
-    const elGallery =document.querySelector('.gallery-container')
+function onClickMemeGenerator() {
+    const elGallery = document.querySelector('.gallery-container')
     const elMemeEditor = document.querySelector('.meme-editor')
     elGallery.classList.add('hidden')
-elMemeEditor.classList.remove('hidden')
+    elMemeEditor.classList.remove('hidden')
 }
 
-function onToggleMenu(){
+function onToggleMenu() {
     const elBody = document.querySelector('body')
     elBody.classList.toggle('menu-open')
 
+}
+
+
+function onChangeFont(value) {
+    ChangeFont(value)
+    renderMeme()
+}
+
+function onSetFontSize(value) {
+    setFontSize(+value)
+    renderMeme()
+
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
 }
