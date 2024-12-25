@@ -222,3 +222,14 @@ function onDeleteLine() {
     deleteLine()
     renderMeme()
 }
+
+function onMoveLineRightLeft(diff) {
+    moveLineRightLeft(diff)
+    renderMeme()
+}
+
+function onMoveLineUpDown(diff){
+    moveLineUpDown(diff)
+    renderMeme()
+}
+

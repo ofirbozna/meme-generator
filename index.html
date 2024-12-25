@@ -44,36 +44,41 @@
                         <button class="fa fill"><input type="color" class="fill-color" oninput="onSetColor()"></button>
                     </div>
                     <div class="size-changers">
-                    <button onclick="onSetLowerBiggerFontSize(+1)">A+</button>
-                    <button onclick="onSetLowerBiggerFontSize(-1)">A-</button>
-
-                </div>
+                        <button onclick="onSetLowerBiggerFontSize(+1)">A+</button>
+                        <button onclick="onSetLowerBiggerFontSize(-1)">A-</button>
+                    </div>
+                    <div class="move-line-btns">
+                        <button onclick="onMoveLineRightLeft(-5)">L</button>
+                        <button onclick="onMoveLineRightLeft(5)">R</button>
+                        <button onclick="onMoveLineUpDown(-5)">U</button>
+                        <button onclick="onMoveLineUpDown(5)">D</button>
+                    </div>
                     <div class="font-selection flex">
-                <select class="font-selector" onchange="onChangeFont(this.value)">
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Verdana">Verdana</option>
-                    <option value="Courier New">Courier New</option>
-                    <option value="Tahoma">Tahoma</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Trebuchet MS">Trebuchet MS</option>
-                    <option value="Impact">Impact</option>
-                    <option value="Comic Sans MS">Comic Sans MS</option>
-                    <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-                    <option value="Palatino Linotype">Palatino Linotype</option>
-                    <option value="Segoe UI">Segoe UI</option>
-                    <option value="Gill Sans">Gill Sans</option>
-                    <option value="Helvetica">Helvetica</option>
-                    <option value="Monospace">Monospace</option>
-                    <option value="Calibri">Calibri</option>
-                    <option value="Cambria">Cambria</option>
-                    <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
-                    <option value="Garamond">Garamond</option>
-                    <option value="Brush Script MT">Brush Script MT</option>
-                </select>
+                        <select class="font-selector" onchange="onChangeFont(this.value)">
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Palatino Linotype">Palatino Linotype</option>
+                            <option value="Segoe UI">Segoe UI</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Monospace">Monospace</option>
+                            <option value="Calibri">Calibri</option>
+                            <option value="Cambria">Cambria</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Brush Script MT">Brush Script MT</option>
+                        </select>
 
 
-                <select class="font-size-selector" onchange="onSetFontSize(this.value)">
+                        <select class="font-size-selector" onchange="onSetFontSize(this.value)">
                             <option value="12">12</option>
                             <option value="14">14</option>
                             <option value="16" selected>16</option>
@@ -83,7 +88,7 @@
                             <option value="30">30</option>
                             <option value="36">36</option>
                             <option value="48">48</option>
-                </select>
+                        </select>
                     </div>
                 </div>
                 <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>

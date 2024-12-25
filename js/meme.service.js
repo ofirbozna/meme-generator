@@ -213,3 +213,14 @@ function moveLine(dx, dy) {
     selectedLine.posY += dy
 
 }
+
+function  moveLineRightLeft(diff){
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    selectedLine.posX += diff
+}
+
+function moveLineUpDown(diff){
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    selectedLine.posY += diff
+}
+
