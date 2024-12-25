@@ -121,6 +121,15 @@ var gMeme = {
     ]
 
 }
+var gRandomLines = [
+    'OVERTHINKING',
+    'THAT IS WHY I AM SINGLE',
+    'NO MORE INTENET FOR YOY!',
+    'I WILL NEVER SLEEP AGAIN',
+    'NO STRESS JUST VIBING',
+    'MEN BE LIKE..',
+    'WOMAN BE LIKE..',
+    'CHILL PUT, I GOT THIS']
 
 
 var gKeywordSearchCountMap = {
@@ -128,6 +137,10 @@ var gKeywordSearchCountMap = {
     'cat': 16,
     'baby': 2
 }
+
+var gSavedMems = [
+
+]
 
 
 
@@ -150,6 +163,7 @@ function setLineTxt(val) {
 
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
+    gMeme.lines[0].txt ='ADD TEXT'
 }
 
 function setColor(borderColor, fillColor) {
@@ -214,13 +228,28 @@ function moveLine(dx, dy) {
 
 }
 
-function  moveLineRightLeft(diff){
+function moveLineRightLeft(diff) {
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     selectedLine.posX += diff
 }
 
-function moveLineUpDown(diff){
+function moveLineUpDown(diff) {
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     selectedLine.posY += diff
 }
 
+
+function getFlexibleMeme() {
+    gMeme.selectedImgId = getRandomInt(1, 19)
+    gMeme.lines[0].txt = gRandomLines[getRandomInt(0, 4)]
+}
+
+function getSavedMems() {
+    return gSavedMems
+}
+
+function saveMeme() {
+    const gMemeCopy = structuredClone(gMeme)
+    console.log(gMemeCopy)
+    gSavedMems.push(gMemeCopy)
+}

@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    scroll-margin-block-start: 10rem;
 }
 
 html{

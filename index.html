@@ -17,7 +17,7 @@
         <div class="logo" onclick="onClickMemeGenerator()">Meme-Generator</div>
         <ul class="main-nav clean-list flex">
             <li><a href="#gallery-container" onclick="onClickGallery()">Gallery</a></li>
-            <li><a href="">Saved</a></li>
+            <li><a href="#saved-container">Saved</a></li>
             <li><a href="">Randomized</a></li>
         </ul>
         <button onclick="onToggleMenu()" class="nav-btn">☰</button>
@@ -40,7 +40,8 @@
                 </div>
                 <div class="txt-edit">
                     <div class="colors">
-                        <button class="fa border"><input type="color" class="fa border-color" oninput="onSetColor()"></button>
+                        <button class="fa border"><input type="color" class="fa border-color"
+                                oninput="onSetColor()"></button>
                         <button class="fa fill"><input type="color" class="fill-color" oninput="onSetColor()"></button>
                     </div>
                     <div class="size-changers">
@@ -96,9 +97,15 @@
 
         </section>
         <section class="gallery-container hidden" id="gallery-container">
+            <button onclick="onGetFlexibleMeme()">Im flexible</button>
             <div class="gallery">
 
             </div>
+
+        </section>
+
+
+        <section class="saved-container">
 
         </section>
     </main>

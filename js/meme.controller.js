@@ -28,10 +28,14 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.clientWidth - 2
 }
 
-
-
 function renderMeme() {
     const meme = getMeme()
+    renderAMeme(meme)
+}
+
+
+
+function renderAMeme(meme) {
     const img = getImgById(meme.selectedImgId)
     const elImg = new Image()
     elImg.src = img.url
@@ -47,6 +51,7 @@ function renderMeme() {
     if (meme.lines.length === 0) return
     renderSelectedLineInputs()
 }
+
 
 function drawText(text, x, y, borderColor, fillColor, fontSize = 30, fontFamily) {
 
@@ -66,6 +71,9 @@ function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = 'my-canvas'
+
+    saveMeme()
+    renderSavedMemesGallery(dataUrl)
 }
 
 function onSetColor() {
@@ -228,8 +236,30 @@ function onMoveLineRightLeft(diff) {
     renderMeme()
 }
 
-function onMoveLineUpDown(diff){
+function onMoveLineUpDown(diff) {
     moveLineUpDown(diff)
     renderMeme()
 }
 
+function onGetFlexibleMeme() {
+    getFlexibleMeme()
+    renderMeme()
+    onClickMemeGenerator()
+}
+
+
+function renderSavedMemesGallery(dataUrl) {
+    const savedMemes = getSavedMems()
+    savedMemes.forEach((meme,idx) => renderSavedMeme(dataUrl,idx))
+}
+
+function renderSavedMeme(dataUrl,idx) {
+    const elSaved = document.querySelector('.saved-container')
+    const strHtml = `<img src="${dataUrl}" alt="" onclick="onEditSavedMeme(${idx})">`
+    elSaved.innerHTML += strHtml
+}
+
+function onEditSavedMeme(idx) {
+    const savedMeme = getSavedMems()
+    renderAMeme(savedMeme[idx])
+}
