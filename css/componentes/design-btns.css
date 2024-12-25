@@ -1,50 +1,134 @@
 .design-btns {
    background-color: var(--crlPrimary1);
    border-radius: 30px;
+   color: #ffffff;
 }
 
-.line-txt {
-   margin-block: 1rem;
+.line-txt ,.font-selection select{
+
+   font-size: 1.5625rem;
+   color: #3D3D3D;
    align-self: center;
    text-align: center;
-   border-radius: 10px;
+   border-radius: 30px;
    background-color: #ebeef3;
    border: none;
    box-shadow:
       0 2px 0 0 #bbc4d1,
-      0 -2px 0 0 #ffffff;
+      0 -2px 0 0 #ffffff;  
+}
 
+.line-txt {
+   width: 80%;
+   padding-block: 0.6rem;
+   margin-block: 2rem;
+}
+
+.font-size-selector{
+   width: 40%;
+   padding-inline: 1rem;
+}
+
+.font-selector{
+   width: 50%;
 }
 
 .line-edit {
-   align-self: center;
+  align-self: center;
    margin-block-end: 1rem;
 }
 
-.txt-edit{
-   display: grid;
-   grid-template-columns: 5px 1fr 1fr  5px;
+.move-line-btns{
    align-self: center;
-
+}
+.line-edit button,.fill,.border ,.size-changers button,.move-line-btns button{
+   height: 3rem;
+   width: 3.4375rem;
+   border-radius: 10px;
+   border: none;
+   color:  #3D3D3D;
+   font-weight: bold;
+   font-size: 1.5rem;
 }
 
-.txt-edit label{
+.fill,.border,.size-changers button{
+   position: relative;
+   
+}
+
+.line-edit button:first-of-type {
+   background-color: #35acca;
+   box-shadow:
+      0 5px 0 0 #1092a0,
+      0 -5px 0 0 #50b7cd;
+}
+
+.line-edit button:nth-of-type(2) {
+   background-color: #3ac34f;
+   box-shadow:
+      0 5px 0 0 #158447,
+      0 -5px 0 0 #6ec47d;
+}
+
+.line-edit button:nth-of-type(3) {
+   background-color: #e33b36;
+   box-shadow:
+      0 5px 0 0#960c0d,
+      0 -5px 0 0 #e26359;
+}
+
+
+.txt-edit {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   background-color: var(--clrSecondary);
+   border-radius: 10px;
+   margin-inline: 2rem;
+   padding: 1rem;
+}
+
+.txt-edit label {
+   align-self: center;
+}
+
+.txt-edit button:first-of-type {
    grid-column: 2;
 }
 
-.txt-edit button:first-of-type{
-   grid-column: 2;
+.colors {
+   align-self: center;
 }
 
-.border-color, .fill-color{
+.colors input[type='color']{
+   opacity: 0;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   height: 0;
+   width: 0;
+}
+
+.border-color,
+.fill-color {
    font-size: 2em;
-   -webkit-appearance: none; 
-   -moz-appearance: none;     
-   appearance: none;         
    border: 2px solid #333;
    border-radius: 5px;
    padding: 10px;
    background-color: #fff;
    cursor: pointer;
    height: 50px;
+}
+
+.size-changers {
+   align-self: center;
+}
+
+.size-changers button{
+   font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.font-selection {
+   justify-content: center;
+   gap: 1rem;
 }

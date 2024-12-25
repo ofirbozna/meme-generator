@@ -34,19 +34,21 @@
                 <input class="line-txt" type="text" placeholder="Enter Text" oninput="onSetLineTxt(this.value)">
                 <div class="line-edit">
                     <button class="fa switch" onclick=" onSwitchLine()"></button>
-                    <button onclick="onAddLine()">+</button>
-                    <button>delete</button>
+                    <button class="fa plus" onclick="onAddLine()"></button>
+                    <button class="fa delete" onclick="onDeleteLine()"></button>
+
                 </div>
                 <div class="txt-edit">
-                    <label for="color">Border color</label>
-                    <input type="color" class="fa border-color" oninput="onSetColor()">
-                    <label for="color">Fill Color</label>
-                    <input type="color" class="fill-color" oninput="onSetColor()">
+                    <div class="colors">
+                        <button class="fa border"><input type="color" class="fa border-color" oninput="onSetColor()"></button>
+                        <button class="fa fill"><input type="color" class="fill-color" oninput="onSetColor()"></button>
+                    </div>
+                    <div class="size-changers">
                     <button onclick="onSetLowerBiggerFontSize(+1)">A+</button>
                     <button onclick="onSetLowerBiggerFontSize(-1)">A-</button>
 
                 </div>
-
+                    <div class="font-selection flex">
                 <select class="font-selector" onchange="onChangeFont(this.value)">
                     <option value="Arial">Arial</option>
                     <option value="Times New Roman">Times New Roman</option>
@@ -70,19 +72,21 @@
                     <option value="Brush Script MT">Brush Script MT</option>
                 </select>
 
+
                 <select class="font-size-selector" onchange="onSetFontSize(this.value)">
-                    <option value="12">12px</option>
-                    <option value="14">14px</option>
-                    <option value="16" selected>16px</option>
-                    <option value="18">18px</option>
-                    <option value="20">20px</option>
-                    <option value="24">24px</option>
-                    <option value="30">30px</option>
-                    <option value="36">36px</option>
-                    <option value="48">48px</option>
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16" selected>16</option>
+                            <option value="18">18</option>
+                            <option value="20">20</option>
+                            <option value="24">24</option>
+                            <option value="30">30</option>
+                            <option value="36">36</option>
+                            <option value="48">48</option>
                 </select>
+                    </div>
+                </div>
                 <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
-                <button class="fa delete" onclick="onDeleteLine()"></button>
             </section>
 
         </section>

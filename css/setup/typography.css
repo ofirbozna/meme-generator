@@ -3,12 +3,17 @@
     src: url('/fonts/fa-brands-400.ttf');
 }
 
+@font-face {
+    font-family: Poppins;
+    src: url('/fonts/Poppins-Medium.ttf');
+}
+
 .fa {
     font-family: fa;
 }
 
 .fa.switch::before {
-    content: "\f063\f062";   
+    content: "\f063\f062";  
 }
 
 
@@ -16,3 +21,16 @@
     content: '\f1f8';
 }
 
+.fa.plus::before{
+    content: '\2b';
+}
+
+.fa.fill::before{
+    content: '\f576';
+    position: absolute;
+}
+
+.fa.border::before{
+    content: '\f55d';
+    position: absolute;
+}

@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html{
+    font-family: poppins, serif;
+}
+
 body{
     background-color: var(--crlPrimary2);
     color: var(--crlPrimary);
