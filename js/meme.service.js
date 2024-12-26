@@ -138,11 +138,9 @@ var gKeywordSearchCountMap = {
     'baby': 2
 }
 
-var gSavedMems = [
+let STORAGE_KEY = 'mems'
 
-]
-
-
+let gSavedMems = loadFromStorage(STORAGE_KEY) || []
 
 function getMeme() {
     return gMeme
@@ -163,7 +161,7 @@ function setLineTxt(val) {
 
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
-    gMeme.lines[0].txt ='ADD TEXT'
+    gMeme.lines[0].txt = 'ADD TEXT'
 }
 
 function setColor(borderColor, fillColor) {
@@ -248,8 +246,17 @@ function getSavedMems() {
     return gSavedMems
 }
 
-function saveMeme() {
+function saveMeme(dataUrl) {
     const gMemeCopy = structuredClone(gMeme)
-    console.log(gMemeCopy)
     gSavedMems.push(gMemeCopy)
+    gSavedMems[gSavedMems.length-1].dataUrl = dataUrl
+    saveMemes()
+}
+
+function editSavedMeme(idx){
+    gMeme = gSavedMems[idx] 
+}
+
+function saveMemes() {
+    saveToStorage(STORAGE_KEY, gSavedMems)
 }

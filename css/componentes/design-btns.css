@@ -41,7 +41,12 @@
 .move-line-btns{
    align-self: center;
 }
-.line-edit button,.fill,.border ,.size-changers button,.move-line-btns button{
+
+.size-colors-btns{
+   display: flex;
+   gap: 0.3rem;
+}
+.line-edit button, .size-colors-btns button ,.size-changers button,.move-line-btns button{
    height: 3rem;
    width: 3.4375rem;
    border-radius: 10px;
@@ -49,10 +54,12 @@
    color:  #3D3D3D;
    font-weight: bold;
    font-size: 1.5rem;
+  
 }
 
 .fill,.border,.size-changers button{
    position: relative;
+   
    
 }
 
@@ -85,6 +92,7 @@
    background-color: var(--clrSecondary);
    border-radius: 10px;
    margin-inline: 2rem;
+   margin-block-end: 1rem;
    padding: 1rem;
 }
 
@@ -92,15 +100,11 @@
    align-self: center;
 }
 
-.txt-edit button:first-of-type {
-   grid-column: 2;
-}
-
-.colors {
+.size-colors-btns {
    align-self: center;
 }
 
-.colors input[type='color']{
+.size-colors-btns input[type='color']{
    opacity: 0;
    -webkit-appearance: none;
    -moz-appearance: none;
@@ -131,4 +135,17 @@
 .font-selection {
    justify-content: center;
    gap: 1rem;
+}
+
+.download{
+   position: relative;
+   align-self: center;
+   background-color:#8F44BB ;
+   box-shadow:
+   0 5px 0 0#6b338b,
+   0 -5px 0 0 #9961ba;
+   border-radius: 10px;
+   padding-inline: 2rem;
+   padding-block:0.5rem ;
+   margin-block-end: 1rem;
 }

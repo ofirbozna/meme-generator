@@ -34,3 +34,9 @@
     content: '\f55d';
     position: absolute;
 }
+
+.fa.download::before{
+    content: '\f019';
+    position: absolute;
+    left: 10px;
+}

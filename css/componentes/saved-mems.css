@@ -1,15 +1,13 @@
-.gallery-container {
-    margin-block-start: 3em;
-}
-
-.gallery {
+.saved-container {
     column-count: 6;
     column-width: 160px;
     column-gap: 5px;
     margin-inline: 20px;
+    margin-block-start: 20px;
+
 }
 
-.gallery img {
+.saved-container img {
     width: 160px;
     border-radius: 10px;
     cursor: pointer;
