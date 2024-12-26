@@ -6,6 +6,7 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 let gStartPos
 
 
+
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -41,6 +42,7 @@ function renderMeme() {
         meme.lines.forEach((line, idx) => {
             line.size = drawText(line.txt, line.posX, line.posY, line.borderColor, line.fillColor, line.fontSize, line.fontFamily)
             if (idx === meme.selectedLineIdx) frameSelectedLine(line.posX, line.posY, line.size, line.fontSize)
+
         })
     }
     if (meme.lines.length === 0) return
@@ -62,6 +64,8 @@ function drawText(text, x, y, borderColor, fillColor, fontSize = 30, fontFamily)
 }
 
 function onDownloadCanvas(elLink) {
+    gIsReadyToDownload = true
+    renderMeme()
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = 'my-canvas'
@@ -99,6 +103,7 @@ function frameSelectedLine(x, y, textWidth, textHeight) {
     gCtx.lineWidth = 2;
     gCtx.strokeRect(x - 10, y - textHeight - 2, textWidth + 20, textHeight + 10)
 }
+
 
 function addLinsteners() {
     addMouseListeners()

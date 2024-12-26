@@ -47,7 +47,6 @@
 .size-colors-btns button,
 .size-changers button,
 .move-line-btns button {
-   flex-wrap: wrap;
    height: 3rem;
    width: 3.5rem;
    border-radius: 10px;

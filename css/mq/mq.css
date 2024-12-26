@@ -89,27 +89,34 @@
     .save {
         margin: 0;
     }
-}
 
-
-@media ((min-width: 760px)) {
-
-    .main-header {
-        margin-block-start: 10px;
-        margin-inline: 10px;
-    }
-
-    .meme-editor {
-        display: grid;
-        grid-template-columns: minmax(30px, 1fr) minmax(auto, 45vw) 60px minmax(auto, 540px) minmax(30px, 1fr);
-    }
-
-    .nav-btn {
-        display: none;
-    }
-
-    .hidden {
-        display: none;
+    .line-edit button,
+    .size-colors-btns button,
+    .size-changers button,
+    .move-line-btns button {
+        height: 3rem;
+        width: 2.8rem;
     }
 
 }
+    @media ((min-width: 760px)) {
+
+        .main-header {
+            margin-block-start: 10px;
+            margin-inline: 10px;
+        }
+
+        .meme-editor {
+            display: grid;
+            grid-template-columns: minmax(30px, 1fr) minmax(auto, 45vw) 60px minmax(auto, 540px) minmax(30px, 1fr);
+        }
+
+        .nav-btn {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    }
