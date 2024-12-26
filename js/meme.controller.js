@@ -1,9 +1,9 @@
 'use strict'
+
 let gElCanvas
 let gCtx
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 let gStartPos
-
 
 
 function onInit() {
@@ -15,6 +15,7 @@ function onInit() {
     renderGallery()
     addLinsteners()
     resizeCanvas()
+    renderSavedMemesGallery()
 
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -30,12 +31,6 @@ function resizeCanvas() {
 
 function renderMeme() {
     const meme = getMeme()
-    renderAMeme(meme)
-}
-
-
-
-function renderAMeme(meme) {
     const img = getImgById(meme.selectedImgId)
     const elImg = new Image()
     elImg.src = img.url
@@ -54,7 +49,6 @@ function renderAMeme(meme) {
 
 
 function drawText(text, x, y, borderColor, fillColor, fontSize = 30, fontFamily) {
-
     var font = fontSize + 'px ' + fontFamily
 
     gCtx.lineWidth = 1
@@ -71,9 +65,6 @@ function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = 'my-canvas'
-
-    saveMeme()
-    renderSavedMemesGallery(dataUrl)
 }
 
 function onSetColor() {
@@ -87,7 +78,6 @@ function onSetLineTxt(val) {
     setLineTxt(val)
     renderMeme()
 }
-
 
 function onSetLowerBiggerFontSize(diff) {
     setLowerBiggerFontSize(diff)
@@ -196,22 +186,34 @@ function renderSelectedLineInputs() {
 function onClickGallery() {
     const elGallery = document.querySelector('.gallery-container')
     const elMemeEditor = document.querySelector('.meme-editor')
+    const elSavedContainer = document.querySelector('.saved-container')
     elGallery.classList.remove('hidden')
     elMemeEditor.classList.add('hidden')
+    elSavedContainer.classList.add('hidden')
 
 }
 
 function onClickMemeGenerator() {
     const elGallery = document.querySelector('.gallery-container')
     const elMemeEditor = document.querySelector('.meme-editor')
+    const elSavedContainer = document.querySelector('.saved-container')
     elGallery.classList.add('hidden')
     elMemeEditor.classList.remove('hidden')
+    elSavedContainer.classList.add('hidden')
+}
+
+function onClickSaved() {
+    const elGallery = document.querySelector('.gallery-container')
+    const elMemeEditor = document.querySelector('.meme-editor')
+    const elSavedContainer = document.querySelector('.saved-container')
+    elGallery.classList.add('hidden')
+    elMemeEditor.classList.add('hidden')
+    elSavedContainer.classList.remove('hidden')
 }
 
 function onToggleMenu() {
     const elBody = document.querySelector('body')
     elBody.classList.toggle('menu-open')
-
 }
 
 
@@ -248,18 +250,36 @@ function onGetFlexibleMeme() {
 }
 
 
-function renderSavedMemesGallery(dataUrl) {
+function renderSavedMemesGallery() {
     const savedMemes = getSavedMems()
-    savedMemes.forEach((meme,idx) => renderSavedMeme(dataUrl,idx))
-}
-
-function renderSavedMeme(dataUrl,idx) {
     const elSaved = document.querySelector('.saved-container')
-    const strHtml = `<img src="${dataUrl}" alt="" onclick="onEditSavedMeme(${idx})">`
-    elSaved.innerHTML += strHtml
+    const strHtml = savedMemes.map((meme, idx) => `<img src="${meme.dataUrl}" alt="" onclick="onEditSavedMeme(${idx})">`)
+    elSaved.innerHTML = strHtml.join('')
 }
 
 function onEditSavedMeme(idx) {
-    const savedMeme = getSavedMems()
-    renderAMeme(savedMeme[idx])
+    editSavedMeme(idx)
+    renderMeme()
+    onClickMemeGenerator()
+}
+
+function onSaveMeme(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+
+    saveMeme(dataUrl)
+    renderSavedMemesGallery()
+}
+
+function onUploadImg(ev) {
+    ev.preventDefault()
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+
+    // After a succesful upload, allow the user to share on Facebook
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+
+    }
+    uploadImg(canvasData, onSuccess)
 }

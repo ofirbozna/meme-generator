@@ -29,16 +29,18 @@
             <div class="canvas-container">
                 <canvas height="520px" width="520px"></canvas>
             </div>
+
             <section class="design-btns flex">
                 <input class="line-txt" type="text" placeholder="Enter Text" oninput="onSetLineTxt(this.value)">
+
                 <div class="line-edit">
                     <button class="fa switch" onclick=" onSwitchLine()"></button>
                     <button class="fa plus" onclick="onAddLine()"></button>
                     <button class="fa delete" onclick="onDeleteLine()"></button>
-
                 </div>
-                <div class="txt-edit">
-                    <div class="size-colors-btns">
+
+                <div class="txt-edit flex">
+                    <div class="size-colors-btns flex">
                         <button class="fa border"><input type="color" class="fa border-color"
                                 oninput="onSetColor()"></button>
                         <button class="fa fill"><input type="color" class="fill-color" oninput="onSetColor()"></button>
@@ -89,22 +91,28 @@
                         </select>
                     </div>
                 </div>
-                <a class="fa download" href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+
+                <div class="share-downlaod  flex space-evenly">
+                    <form class="flex" action="" method="POST" enctype="multipart/form-data"
+                        onsubmit="onUploadImg(event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="fa share" type="submit">Share</button>
+                    </form>
+                    <button class="fa save" onclick="onSaveMeme(this)">save</button>
+                    <a class="fa download" href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+                </div>
             </section>
-
         </section>
+
         <section class="gallery-container hidden" id="gallery-container">
-            <button onclick="onGetFlexibleMeme()">Im flexible</button>
+            <button class="flexible-btn" onclick="onGetFlexibleMeme()">Im flexible</button>
             <div class="gallery">
-
             </div>
-
         </section>
-
 
         <section class="saved-container hidden">
-
         </section>
+
     </main>
 
     <script src="js/util.service.js"></script>
@@ -113,6 +121,7 @@
     <script src="js/upload.servics.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
+
 </body>
 
 </html>

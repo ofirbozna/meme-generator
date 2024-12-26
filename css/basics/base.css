@@ -1,18 +1,22 @@
-*{
+* {
     box-sizing: border-box;
     scroll-margin-block-start: 10rem;
 }
 
-html{
+html {
     font-family: poppins, serif;
 }
 
-body{
+body {
     background-color: var(--crlPrimary2);
     color: var(--crlPrimary);
     margin: 0;
 }
 
-a{
+a {
     color: var(--crlPrimary);
+}
+
+.fa {
+    font-family: fa;
 }

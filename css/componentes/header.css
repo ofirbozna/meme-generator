@@ -1,19 +1,18 @@
 .main-header {
-    position:sticky;
+    position: sticky;
     background: linear-gradient(90deg, rgba(16, 156, 177, 1) 18%, rgba(47, 186, 117, 1) 71%);
     color: var(--crlPrimary);
     font-size: 1.25rem;
     align-items: center;
-    border-radius: 30px; 
-    padding-block: 0.2rem; 
+    border-radius: 30px;
+    padding-block: 0.2rem;
 }
 
-.main-header a{
+.main-header a {
     text-decoration: none;
     color: var(--crlPrimary);
-
 }
 
-.logo{
+.logo {
     cursor: pointer;
 }

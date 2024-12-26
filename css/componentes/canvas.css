@@ -1,10 +1,8 @@
-
-.canvas-container{
+.canvas-container {
     border-radius: 30px;
 }
 
-canvas{
+canvas {
     border-radius: 30px;
-    border: 4px solid 
-     var(--crlPrimary1);
+    border: 4px solid var(--crlPrimary1);
 }

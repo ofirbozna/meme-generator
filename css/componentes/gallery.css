@@ -15,3 +15,19 @@
     cursor: pointer;
     margin-block-end: 5px;
 }
+
+.flexible-btn{
+    position: relative;
+    background-color: #1E7CD3;
+    box-shadow:
+       0 5px 0 0#185ea0,
+       0 -5px 0 0 #4990d2;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border: none;
+    color: var(--crlPrimary);
+    font-size: 0.8rem;
+    margin-inline: 1.5rem;
+    margin-block-end: 2rem;
+}

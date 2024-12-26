@@ -1,10 +1,8 @@
-
-.canvas-container{
+.canvas-container {
     grid-column: 2;
 }
 
-.design-btns{
+.design-btns {
     grid-column: 4;
     flex-direction: column;
-
 }

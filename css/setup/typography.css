@@ -8,35 +8,4 @@
     src: url('/fonts/Poppins-Medium.ttf');
 }
 
-.fa {
-    font-family: fa;
-}
 
-.fa.switch::before {
-    content: "\f063\f062";  
-}
-
-
-.fa.delete::before{
-    content: '\f1f8';
-}
-
-.fa.plus::before{
-    content: '\2b';
-}
-
-.fa.fill::before{
-    content: '\f576';
-    position: absolute;
-}
-
-.fa.border::before{
-    content: '\f55d';
-    position: absolute;
-}
-
-.fa.download::before{
-    content: '\f019';
-    position: absolute;
-    left: 10px;
-}

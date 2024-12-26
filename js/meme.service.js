@@ -1,107 +1,105 @@
 'use strct'
 
-var gImgs = [
+let gImgs = [
     {
         id: 1,
         url: 'imgs/1.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['funny', 'Tramp',]
     },
     {
         id: 2,
         url: 'imgs/2.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['cute', 'dogs', 'love']
 
     },
     {
         id: 3,
         url: 'imgs/3.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['sleep', 'dog', 'baby']
     },
     {
         id: 4,
         url: 'imgs/4.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['sleep', 'cat']
     },
     {
         id: 5,
         url: 'imgs/5.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['baby', 'proud', 'determined']
     },
     {
         id: 6,
         url: 'imgs/6.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['funny', 'explain']
     },
     {
         id: 7,
         url: 'imgs/7.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['suprised', 'baby', 'exited']
     },
     {
         id: 8,
         url: 'imgs/8.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['funny', 'proud', 'sexy']
     },
     {
         id: 9,
         url: 'imgs/9.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['laugh', 'baby', 'happy']
     },
     {
         id: 10,
         url: 'imgs/10.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['laugh', 'obama']
     },
     {
         id: 11,
         url: 'imgs/11.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['kiss', 'gay']
     },
     {
         id: 12,
         url: 'imgs/12.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['pointing', 'man']
     },
     {
         id: 13,
         url: 'imgs/13.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['glass', 'chears']
     },
     {
         id: 14,
         url: 'imgs/14.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['serious', 'sunglasses']
     },
     {
         id: 15,
         url: 'imgs/15.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['serious', 'man']
     },
     {
         id: 16,
         url: 'imgs/16.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['laugh', 'man']
     },
     {
         id: 17,
         url: 'imgs/17.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['man', 'serious']
     },
     {
         id: 18,
         url: 'imgs/18.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['toy', 'thinkin']
     },
     {
         id: 19,
         url: 'imgs/19.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['toy', 'thinking']
     }
-
-
 ]
 
-var gMeme = {
+let gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [
@@ -116,12 +114,10 @@ var gMeme = {
             fontFamily: 'Arial',
             isDrag: false
         },
-
-
     ]
-
 }
-var gRandomLines = [
+
+let gRandomLines = [
     'OVERTHINKING',
     'THAT IS WHY I AM SINGLE',
     'NO MORE INTENET FOR YOY!',
@@ -129,18 +125,20 @@ var gRandomLines = [
     'NO STRESS JUST VIBING',
     'MEN BE LIKE..',
     'WOMAN BE LIKE..',
-    'CHILL PUT, I GOT THIS']
+    'CHILL PUT, I GOT THIS'
+]
 
 
-var gKeywordSearchCountMap = {
-    'funny': 12,
-    'cat': 16,
-    'baby': 2
-}
+// let gKeywordSearchCountMap = {
+//     'funny': 12,
+//     'cat': 16,
+//     'baby': 2
+// }
 
 let STORAGE_KEY = 'mems'
-
 let gSavedMems = loadFromStorage(STORAGE_KEY) || []
+let gEditedMemeIdx
+
 
 function getMeme() {
     return gMeme
@@ -154,18 +152,35 @@ function getImgById(imgId) {
     return gImgs.find(img => img.id === imgId)
 }
 
+function getSavedMems() {
+    return gSavedMems
+}
 
 function setLineTxt(val) {
     gMeme.lines[gMeme.selectedLineIdx].txt = val
 }
 
 function setImg(imgId) {
-    gMeme.selectedImgId = imgId
-    gMeme.lines[0].txt = 'ADD TEXT'
+    gMeme = {
+        selectedImgId: imgId,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'ADD TEXT',
+                fontSize: 20,
+                borderColor: '#22252c',
+                fillColor: '#ffffff',
+                posX: 30,
+                posY: 30,
+                size: 0,
+                fontFamily: 'Arial',
+                isDrag: false
+            },
+        ]
+    }
 }
 
 function setColor(borderColor, fillColor) {
-
     gMeme.lines[gMeme.selectedLineIdx].borderColor = borderColor
     gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor
 }
@@ -211,10 +226,6 @@ function ChangeFont(value) {
     gMeme.lines[gMeme.selectedLineIdx].fontFamily = value
 }
 
-
-
-
-//////////
 function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
@@ -236,25 +247,24 @@ function moveLineUpDown(diff) {
     selectedLine.posY += diff
 }
 
-
 function getFlexibleMeme() {
     gMeme.selectedImgId = getRandomInt(1, 19)
     gMeme.lines[0].txt = gRandomLines[getRandomInt(0, 4)]
 }
 
-function getSavedMems() {
-    return gSavedMems
-}
-
 function saveMeme(dataUrl) {
     const gMemeCopy = structuredClone(gMeme)
+    if (gMeme.dataUrl) {
+        gSavedMems[gEditedMemeIdx].dataUrl = dataUrl
+    }
     gSavedMems.push(gMemeCopy)
-    gSavedMems[gSavedMems.length-1].dataUrl = dataUrl
+    gSavedMems[gSavedMems.length - 1].dataUrl = dataUrl
     saveMemes()
 }
 
-function editSavedMeme(idx){
-    gMeme = gSavedMems[idx] 
+function editSavedMeme(idx) {
+    gMeme = gSavedMems[idx]
+    gEditedMemeIdx = idx
 }
 
 function saveMemes() {
