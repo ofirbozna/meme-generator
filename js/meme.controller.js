@@ -17,11 +17,6 @@ function onInit() {
     addLinsteners()
     resizeCanvas()
     renderSavedMemesGallery()
-
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderMeme()
-    })
 }
 
 function resizeCanvas() {
@@ -64,7 +59,6 @@ function drawText(text, x, y, borderColor, fillColor, fontSize = 30, fontFamily)
 }
 
 function onDownloadCanvas(elLink) {
-    gIsReadyToDownload = true
     renderMeme()
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
@@ -107,7 +101,12 @@ function frameSelectedLine(x, y, textWidth, textHeight) {
 
 function addLinsteners() {
     addMouseListeners()
-    addMouseListeners()
+    addTouchListeners()
+
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+    })
 }
 
 function addMouseListeners() {
@@ -120,6 +119,11 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchstart', onDown)
     gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchend', onUp)
+
+    const elButtons = document.querySelectorAll('button');
+    elButtons.forEach(button => button.addEventListener('dblclick', (event) => {
+        event.preventDefault(); // מניעת זום על הקנבס
+    }))
 }
 
 function onDown(ev) {
@@ -137,6 +141,7 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
+    ev.preventDefault()
     const meme = getMeme()
     const { isDrag } = meme.lines[gMeme.selectedLineIdx]
     if (!isDrag) return
@@ -161,11 +166,8 @@ function getEvPos(ev) {
     }
 
     if (TOUCH_EVS.includes(ev.type)) {
-        // Prevent triggering the mouse ev
         ev.preventDefault()
-        // Gets the first touch point
         ev = ev.changedTouches[0]
-        // Calc the right pos according to the touch screen
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
