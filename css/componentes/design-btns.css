@@ -172,6 +172,8 @@
    border: none;
    color: var(--crlPrimary);
    font-size: 0.8rem;
+   cursor: pointer;
+
 }
 
 .save {
@@ -188,6 +190,7 @@
    color: var(--crlPrimary);
    font-size: 0.8rem;
    margin-inline: 0.5rem;
+   cursor: pointer;
 }
 
 .fa.switch::before {
