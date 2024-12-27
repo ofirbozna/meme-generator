@@ -249,7 +249,20 @@ function moveLineUpDown(diff) {
 
 function getFlexibleMeme() {
     gMeme.selectedImgId = getRandomInt(1, 19)
-    gMeme.lines[0].txt = gRandomLines[getRandomInt(0, 4)]
+    let randomTxt = gRandomLines[getRandomInt(0, 4)]
+    gMeme.lines = {
+        txt: randomTxt,
+        fontSize: 20,
+        borderColor: '#22252c',
+        fillColor: '#ffffff',
+        posX: 30,
+        posY: 30,
+        size: 0,
+        fontFamily: 'Arial',
+        isDrag: false
+    }
+    
+    
 }
 
 function saveMeme(dataUrl) {
