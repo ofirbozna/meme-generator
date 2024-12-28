@@ -65,6 +65,7 @@
     body:not(.menu-open) .main-nav {
         transform: translateX(100%);
         pointer-events: none;
+        z-index: 100;
 
     }
 

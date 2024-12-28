@@ -40,7 +40,7 @@ function renderMeme() {
 
         })
     }
-    if (!meme.selectedLineIdx) return
+    if (meme.selectedLineIdx === null) return
     renderSelectedLineInputs()
 }
 
@@ -128,7 +128,7 @@ function addTouchListeners() {
 
     const elButtons = document.querySelectorAll('button');
     elButtons.forEach(button => button.addEventListener('dblclick', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
     }))
 }
 
@@ -255,13 +255,6 @@ function onMoveLineUpDown(diff) {
     renderMeme()
 }
 
-function onGetFlexibleMeme() {
-    getFlexibleMeme()
-    renderMeme()
-    onClickMemeGenerator()
-}
-
-
 function renderSavedMemesGallery() {
     const savedMemes = getSavedMems()
     const elSaved = document.querySelector('.saved-container')
@@ -295,3 +288,5 @@ function onUploadImg(ev) {
     }
     uploadImg(canvasData, onSuccess)
 }
+
+

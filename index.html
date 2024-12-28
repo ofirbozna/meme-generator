@@ -106,6 +106,25 @@
 
         <section class="gallery-container hidden" id="gallery-container">
             <button class="flexible-btn" onclick="onGetFlexibleMeme()">Im flexible</button>
+            <div class=" fa filter-memes flex">
+                <input class="filter-meme" list="key-words" name="keyWords"
+                    onchange="onFilterByKeyWords(this.value)">
+                <datalist id="key-words">
+                    <option value="sad">
+                    <option value="funny">
+                    <option value="love">
+                    <option value="laugh">
+                    <option value="happy">
+                    <option value="man">
+                    <option value="serious">
+                    <option value="toy">
+                    <option value="cheers">
+                    <option value="dog">
+                    <option value="cat">
+                    <option value="baby">
+                </datalist>
+                <button class="clear-btn" onclick="onClearSearch()">X</button>
+            </div>
             <div class="gallery">
             </div>
         </section>

@@ -7,6 +7,7 @@
     column-width: 160px;
     column-gap: 5px;
     margin-inline: 20px;
+    margin-block-start: 8rem;
 }
 
 .gallery img {
@@ -16,18 +17,41 @@
     margin-block-end: 5px;
 }
 
-.flexible-btn{
+.flexible-btn {
+    display: block;
+    z-index: -1;
     position: relative;
     background-color: #1E7CD3;
     box-shadow:
-       0 5px 0 0#185ea0,
-       0 -5px 0 0 #4990d2;
+        0 5px 0 0#185ea0,
+        0 -5px 0 0 #4990d2;
     border-radius: 10px;
     padding-inline: 1rem;
     padding-block: 0.5rem;
     border: none;
     color: var(--crlPrimary);
     font-size: 0.8rem;
-    margin-inline: 1.5rem;
+    margin-inline: auto;
     margin-block-end: 2rem;
+}
+
+
+.filter-memes{
+    justify-content: center;
+}
+
+.filter-meme {
+    background-color: #393b41;
+    border-radius: 30px;
+    height: 3rem;
+    width: 80vw;
+
+}
+
+.clear-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--crlPrimary);
+    font-size: 1.2rem;
+
 }

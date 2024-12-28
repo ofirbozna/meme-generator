@@ -25,7 +25,7 @@ let gImgs = [
     {
         id: 5,
         url: 'imgs/5.jpg',
-        keywords: ['baby', 'proud', 'determined']
+        keywords: ['baby', 'proud', 'determined','sad']
     },
     {
         id: 6,
@@ -50,27 +50,27 @@ let gImgs = [
     {
         id: 10,
         url: 'imgs/10.jpg',
-        keywords: ['laugh', 'obama']
+        keywords: ['laugh', 'happy']
     },
     {
         id: 11,
         url: 'imgs/11.jpg',
-        keywords: ['kiss', 'gay']
+        keywords: ['kiss', 'funny']
     },
     {
         id: 12,
         url: 'imgs/12.jpg',
-        keywords: ['pointing', 'man']
+        keywords: ['funny', 'man']
     },
     {
         id: 13,
         url: 'imgs/13.jpg',
-        keywords: ['glass', 'chears']
+        keywords: ['happy', 'cheers']
     },
     {
         id: 14,
         url: 'imgs/14.jpg',
-        keywords: ['serious', 'sunglasses']
+        keywords: ['serious', 'man']
     },
     {
         id: 15,
@@ -90,7 +90,7 @@ let gImgs = [
     {
         id: 18,
         url: 'imgs/18.jpg',
-        keywords: ['toy', 'thinkin']
+        keywords: ['toy', 'thinking']
     },
     {
         id: 19,
@@ -144,8 +144,13 @@ function getMeme() {
     return gMeme
 }
 
-function getImges() {
-    return gImgs
+function getImges(val) {
+    let imgs = [...gImgs]
+    if (val) {
+        const regex = new RegExp(val, 'i')
+        imgs = gImgs.filter(img => img.keywords.some(keyword => regex.test(keyword)))
+    }
+    return imgs
 }
 
 function getImgById(imgId) {
@@ -261,8 +266,8 @@ function getFlexibleMeme() {
         fontFamily: 'Arial',
         isDrag: false
     }
-    
-    
+
+
 }
 
 function saveMeme(dataUrl) {
@@ -283,3 +288,5 @@ function editSavedMeme(idx) {
 function saveMemes() {
     saveToStorage(STORAGE_KEY, gSavedMems)
 }
+
+
