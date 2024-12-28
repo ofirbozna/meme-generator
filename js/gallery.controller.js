@@ -23,9 +23,33 @@ function onFilterByKeyWords(val) {
     renderGallery(val)
 }
 
-function onClearSearch(){
+function onClearSearch() {
     const elFilter = document.querySelector('.filter-meme')
     elFilter.value = ''
 }
 
 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+    onClickMemeGenerator()
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    const reader = new FileReader()
+
+    reader.onload = function (event) {
+        const img = new Image()
+        img.onload = () => {
+            onImageReady(img)
+        }
+        img.src = event.target.result
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(img) {
+    addImg(img.src)
+    setAsMeme()
+    renderMeme()
+}

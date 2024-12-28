@@ -25,7 +25,7 @@ let gImgs = [
     {
         id: 5,
         url: 'imgs/5.jpg',
-        keywords: ['baby', 'proud', 'determined','sad']
+        keywords: ['baby', 'proud', 'determined', 'sad']
     },
     {
         id: 6,
@@ -96,7 +96,7 @@ let gImgs = [
         id: 19,
         url: 'imgs/19.jpg',
         keywords: ['toy', 'thinking']
-    }
+    },
 ]
 
 let gMeme = {
@@ -289,4 +289,32 @@ function saveMemes() {
     saveToStorage(STORAGE_KEY, gSavedMems)
 }
 
+function addImg(img) {
+    let id = gImgs[gImgs.length - 1].id + 1
+    gImgs.push({
+        id,
+        url: img,
+        keywords: ['my images']
+    })
+}
 
+function setAsMeme() {
+    let id = gImgs[gImgs.length - 1].id
+    gMeme = {
+        selectedImgId: id,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'ADD TEXT',
+                fontSize: 20,
+                borderColor: '#22252c',
+                fillColor: '#ffffff',
+                posX: 30,
+                posY: 30,
+                size: 0,
+                fontFamily: 'Arial',
+                isDrag: false
+            },
+        ]
+    }
+}

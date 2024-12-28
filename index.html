@@ -104,11 +104,10 @@
             </section>
         </section>
 
-        <section class="gallery-container hidden" id="gallery-container">
+        <section class="gallery-container flex hidden" id="gallery-container">
             <button class="flexible-btn" onclick="onGetFlexibleMeme()">Im flexible</button>
             <div class=" fa filter-memes flex">
-                <input class="filter-meme" list="key-words" name="keyWords"
-                    onchange="onFilterByKeyWords(this.value)">
+                <input class="filter-meme" list="key-words" name="keyWords" placeholder="Search" onchange="onFilterByKeyWords(this.value)">
                 <datalist id="key-words">
                     <option value="sad">
                     <option value="funny">
@@ -125,8 +124,15 @@
                 </datalist>
                 <button class="clear-btn" onclick="onClearSearch()">X</button>
             </div>
-            <div class="gallery">
-            </div>
+            <div class="share-container"></div>
+            <section class="gallery-main-layout">
+                <label class="file-upload-label" for="file-upload-input"><span class="fa icon"></span>Upload Image</label>
+                <input type="file" id="file-upload-input" class="file-input btn" name="image"
+                    onchange="onImgInput(event)" />
+                <div class="gallery">
+
+                </div>
+            </section>
         </section>
 
         <section class="saved-container hidden">

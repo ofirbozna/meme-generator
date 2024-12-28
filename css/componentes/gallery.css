@@ -1,8 +1,11 @@
 .gallery-container {
+    flex-direction: column;
     margin-block-start: 3em;
+    background-color: #393b41;
+
 }
 
-.gallery {
+.gallery-main-layout {
     column-count: 6;
     column-width: 160px;
     column-gap: 5px;
@@ -13,14 +16,12 @@
 .gallery img {
     width: 160px;
     border-radius: 10px;
+
     cursor: pointer;
-    margin-block-end: 5px;
 }
 
+
 .flexible-btn {
-    display: block;
-    z-index: -1;
-    position: relative;
     background-color: #1E7CD3;
     box-shadow:
         0 5px 0 0#185ea0,
@@ -32,20 +33,27 @@
     color: var(--crlPrimary);
     font-size: 0.8rem;
     margin-inline: auto;
-    margin-block-end: 2rem;
+    margin-block: 2rem;
 }
 
 
-.filter-memes{
+.filter-memes {
     justify-content: center;
 }
 
 .filter-meme {
-    background-color: #393b41;
+    background-color: var(--crlPrimary2);
     border-radius: 30px;
     height: 3rem;
     width: 80vw;
+    border: none;
 
+}
+
+.filter-meme::placeholder {
+    font-size: 1.3rem;
+    padding-inline: 1.5rem;
+    font-family: poppins;
 }
 
 .clear-btn {
@@ -54,4 +62,34 @@
     color: var(--crlPrimary);
     font-size: 1.2rem;
 
+}
+
+.file-upload-label {
+    display: flex;
+    font-family: poppins;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    aspect-ratio: 1;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-block-end: 5px;
+    cursor: pointer;
+}
+
+.icon{
+    position: relative;
+}
+
+.fa.icon::before{
+    content: '\f093';
+    position: absolute;
+    left: 3.125rem;
+    top: 1rem;
+}
+
+.file-input {
+    display: none;
 }
