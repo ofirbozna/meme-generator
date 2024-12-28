@@ -198,9 +198,9 @@ function setFontSize(value) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize = value
 }
 
-function addLine() {
+function addLine(txt = 'ADD TEXT') {
     gMeme.lines.push({
-        txt: 'ADD TEXT',
+        txt,
         fontSize: 20,
         borderColor: '#22252c',
         fillColor: '#ffffff',
@@ -317,4 +317,9 @@ function setAsMeme() {
             },
         ]
     }
+}
+
+function addEmoji(emoji) {
+    addLine(emoji)
+
 }

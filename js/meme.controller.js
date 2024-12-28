@@ -289,4 +289,11 @@ function onUploadImg(ev) {
     uploadImg(canvasData, onSuccess)
 }
 
+function onAddEmoji(elEmoji){
+    addEmoji(elEmoji.innerHTML)
+    renderMeme()
+
+
+}
+
 

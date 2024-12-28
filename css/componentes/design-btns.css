@@ -14,6 +14,37 @@
    padding: 1rem;
 }
 
+.emojis{
+   display: flex;
+   align-self: center;
+   font-size: 2rem;
+   width: 80%;
+   overflow-x: scroll;
+   white-space: nowrap;
+   margin-block-end: 1rem;
+   
+}
+
+
+.emojis::-webkit-scrollbar {
+   height: 10px;
+}
+
+.emojis span{
+   cursor: pointer;
+}
+
+.emojis::-webkit-scrollbar-thumb {
+   background: linear-gradient(90deg, rgba(16, 156, 177, 1) 18%, rgba(47, 186, 117, 1) 71%);
+   
+   border-radius: 5px;
+}
+
+.emojis::-webkit-scrollbar-track {
+   background-color: #e0e0e044;
+   border-radius: 5px;
+}
+
 .line-txt,
 .font-selection select {
    font-size: 1.5625rem;
@@ -42,6 +73,8 @@
 .share-downlaod {
    margin-block-end: 1rem;
 }
+
+
 
 .line-edit button,
 .size-colors-btns button,
