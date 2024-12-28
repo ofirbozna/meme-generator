@@ -9,6 +9,7 @@
         border-radius: 0;
         padding-block: 1.5rem;
         padding-inline: 1.5rem;
+        z-index: 2;
     }
 
     .logo {
@@ -100,24 +101,34 @@
     }
 
 }
-    @media ((min-width: 760px)) {
 
-        .main-header {
-            margin-block-start: 10px;
-            margin-inline: 10px;
-        }
-
-        .meme-editor {
-            display: grid;
-            grid-template-columns: minmax(30px, 1fr) minmax(auto, 45vw) 60px minmax(auto, 540px) minmax(30px, 1fr);
-        }
-
-        .nav-btn {
-            display: none;
-        }
-
-        .hidden {
-            display: none;
-        }
-
+@media (max-width: 840px){
+    .line-edit button,
+    .size-colors-btns button,
+    .size-changers button,
+    .move-line-btns button {
+        height: 3rem;
+        width: 2.8rem;
     }
+}
+@media ((min-width: 760px)) {
+
+    .main-header {
+        margin-block-start: 10px;
+        margin-inline: 10px;
+    }
+
+    .meme-editor {
+        display: grid;
+        grid-template-columns: minmax(30px, 1fr) minmax(auto, 45vw) 60px minmax(auto, 40vw) minmax(30px, 1fr);
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+}

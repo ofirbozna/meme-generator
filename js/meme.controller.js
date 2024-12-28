@@ -6,7 +6,6 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 let gStartPos
 
 
-
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -68,8 +67,9 @@ function onDownloadCanvas(elLink) {
         elLink.href = dataUrl
         elLink.download = 'my-canvas'
         meme.selectedLineIdx = 0
-    }, 1000);
+    }, 5);
 }
+
 
 function onSetColor() {
     const elFillColor = document.querySelector('.fill-color')
@@ -104,15 +104,25 @@ function frameSelectedLine(x, y, textWidth, textHeight) {
     gCtx.strokeRect(x - 10, y - textHeight - 2, textWidth + 20, textHeight + 10)
 }
 
-
 function addLinsteners() {
     addMouseListeners()
     addTouchListeners()
+
 
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
     })
+
+    window.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Backspace') {
+            deleteCharMemeTxt()
+        } else if (typeof ev.key === 'string' && ev.key.length === 1) {
+            addCharToMemeLine(ev.key);
+        }
+        renderMeme();
+
+    });
 }
 
 function addMouseListeners() {
@@ -141,6 +151,7 @@ function onDown(ev) {
             setLineDrag(true)
             gStartPos = pos
             document.body.style.cursor = 'grabbing'
+
         }
     })
     renderMeme()
@@ -289,7 +300,7 @@ function onUploadImg(ev) {
     uploadImg(canvasData, onSuccess)
 }
 
-function onAddEmoji(elEmoji){
+function onAddEmoji(elEmoji) {
     addEmoji(elEmoji.innerHTML)
     renderMeme()
 

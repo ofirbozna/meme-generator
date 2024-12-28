@@ -34,6 +34,7 @@
     font-size: 0.8rem;
     margin-inline: auto;
     margin-block: 2rem;
+    cursor: pointer;
 }
 
 
@@ -47,12 +48,15 @@
     height: 3rem;
     width: 80vw;
     border: none;
+    font-size: 1.3rem;
+    color: white;
+    padding-inline: 1.5rem;
+    font-family: poppins;
 
 }
 
 .filter-meme::placeholder {
     font-size: 1.3rem;
-    padding-inline: 1.5rem;
     font-family: poppins;
 }
 

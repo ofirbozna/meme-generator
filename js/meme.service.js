@@ -254,8 +254,8 @@ function moveLineUpDown(diff) {
 
 function getFlexibleMeme() {
     gMeme.selectedImgId = getRandomInt(1, 19)
-    let randomTxt = gRandomLines[getRandomInt(0, 4)]
-    gMeme.lines = {
+    let randomTxt = gRandomLines[getRandomInt(0, 7)]
+    gMeme.lines =[ {
         txt: randomTxt,
         fontSize: 20,
         borderColor: '#22252c',
@@ -265,7 +265,7 @@ function getFlexibleMeme() {
         size: 0,
         fontFamily: 'Arial',
         isDrag: false
-    }
+    }]
 
 
 }
@@ -322,4 +322,12 @@ function setAsMeme() {
 function addEmoji(emoji) {
     addLine(emoji)
 
+}
+
+function deleteCharMemeTxt() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt.slice(0, -1)
+}
+
+function addCharToMemeLine(char) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt += char
 }
