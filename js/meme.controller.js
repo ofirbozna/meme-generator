@@ -115,9 +115,12 @@ function addLinsteners() {
     })
 
     window.addEventListener('keydown', (ev) => {
+        if (['INPUT', 'TEXTAREA'].includes(ev.target.tagName) || ev.target.isContentEditable) {
+            return
+        }
         if (ev.key === 'Backspace') {
             deleteCharMemeTxt()
-        } else if (typeof ev.key === 'string' && ev.key.length === 1) {
+        } else if (ev.key.length === 1) {
             addCharToMemeLine(ev.key);
         }
         renderMeme();
